@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  .searchContainer {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    /* padding-left: 255px; */
+  }
+
+  .searchInput {
+    flex: 1;
+    padding: 8px;
+    /* box-sizing: border-box; */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 5px
+  }
+
+  .dropdown {
+      padding: 8px;
+      margin-left: 10px;
+      border-radius: 5px;
+      width: 130px;
+  }
+
+  .uploadBtn {
+    padding: 8px;
+    background-color: #4caf50;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 130px;
+    height: 40px;
+  }
+  
+  .Navbar{
+      background-color: #4caf50;
+      display: flex;
+      justify-content: center ;
+      align-items: center;
+      height: 60px;
+      /* margin: 20px; */
+
+  }
+
+  .mainItem{
+      display: flex;
+      height: 60px;
+      margin: 20px;
+      
+  }
+
+  .file-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
