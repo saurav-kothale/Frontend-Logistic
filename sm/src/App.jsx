@@ -10,7 +10,6 @@ import Post from "./component/Post";
 import Slab from "./component/slab";
 import React from "react";
 import FileUpload from "./component/FileUpload";
-import LogIn from "./component/login";
 import LoginForm from "./component/login";
 import Dashboard from "./component/dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

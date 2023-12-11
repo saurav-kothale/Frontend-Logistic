@@ -1,0 +1,11 @@
+.stepContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.stepContentContainer{
+    display: flex;
+    justify-content: center;
+    height: 600px;
+    padding: 20px;
+}

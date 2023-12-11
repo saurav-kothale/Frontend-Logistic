@@ -20,14 +20,14 @@ const SideBar = ({selectedTab, setSelectedTab}) => {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item" onClick={() => {setSelectedTab("Home")} }>
+        {/* <li className="nav-item" onClick={() => {setSelectedTab("Home")} }>
           <a href="#" className={`nav-link link-body-emphasis ${selectedTab === "Home" && "active"}`} aria-current="page">
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
             </svg>
             Home
           </a>
-        </li>
+        </li> */}
         <li onClick={() => {setSelectedTab("Dashboard")} }>
           <a href="#" className={`nav-link link-body-emphasis ${selectedTab === "Dashboard" && "active"}`}>
             <svg className="bi pe-none me-2" width="16" height="16">

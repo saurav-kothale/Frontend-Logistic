@@ -43,11 +43,12 @@ const LoginForm = () => {
       <h2>Login</h2>
       <form>
         <div className={styles.inputGroup}>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email"></label>
           <input
             type="email"
             id="email"
             name="email"
+            placeholder='Email'
             value={email_id}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -55,11 +56,12 @@ const LoginForm = () => {
         </div>
 
         <div className={styles.inputGroup}>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password"></label>
           <input
             type="password"
             id="password"
             name="password"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
