@@ -16,7 +16,7 @@ const SideBar = ({selectedTab, setSelectedTab}) => {
         <svg className="bi pe-none me-2" width="40" height="32">
           <use xlinkHref="#bootstrap"></use>
         </svg>
-        <span className="fs-4">Sidebar</span>
+        <span className="fs-4">EVIFY PANAL</span>
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
@@ -52,8 +52,8 @@ const SideBar = ({selectedTab, setSelectedTab}) => {
             File Upload
           </a>
         </li>
-        <li>
-          <a href="#" className="nav-link link-body-emphasis">
+        <li onClick={() => {setSelectedTab("Customer")} }>
+          <a href="#" className={`nav-link link-body-emphasis ${selectedTab === "Customer" && "active"}`}>
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#people-circle"></use>
             </svg>

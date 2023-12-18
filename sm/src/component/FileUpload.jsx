@@ -19,7 +19,7 @@ const FileUpload = () => {
       <div className={styles.mainItem}>
         <div className={styles.searchContainer}>
           <input type="text" className={styles.searchInput} placeholder="Search" />
-          <select className={styles.dropdown}>
+          {/* <select className={styles.dropdown}>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
@@ -38,7 +38,7 @@ const FileUpload = () => {
             <button className={styles.uploadBtn} onClick={handleUploadClick}>
               Upload
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

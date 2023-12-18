@@ -1,0 +1,39 @@
+.firstRow{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.firstRow.div{
+    padding: 20px;
+}
+
+.secondRow{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.thirdRow{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.fourthRow{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.formContainer{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.buttonContainer{
+    margin-left: 10px;
+}
+
+
