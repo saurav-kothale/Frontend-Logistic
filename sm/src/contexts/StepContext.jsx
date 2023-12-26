@@ -10,6 +10,8 @@ const StepContext = (props) => {
   const [finalData, setFinalData] = useState([]);
   const [fileId, setFileId] = useState(null)
   const [fileName, setFileName] = useState(null)
+  const [uploadedFile, setUploadedFile] = useState(null);
+
 
   return (    
       <MultiStepContext.Provider
@@ -23,7 +25,9 @@ const StepContext = (props) => {
           fileId,
           setFileId,
           fileName,
-          setFileName
+          setFileName,
+          uploadedFile, 
+          setUploadedFile
         }}
       >
         {props.children}

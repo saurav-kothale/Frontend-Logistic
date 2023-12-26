@@ -7,11 +7,11 @@ import { Step, Button } from "@material-ui/core";
 
 const FirstStep = () => {
 
-  const { setStep, setUserData, userData, currentStep } =
+  const { setStep, setUserData, userData, currentStep, uploadedFile, setUploadedFile } =
     useContext(MultiStepContext);
 
 
-  const [uploadedFile, setUploadedFile] = useState(null);
+
 
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -50,6 +50,9 @@ const FirstStep = () => {
     await handlChange(); // Wait for the file upload to complete
     // changeState();
     console.log(userData)
+    setUploadedFile(uploadedFile)
+    console.log("first step : ", uploadedFile)
+
     setStep(2);
     console.log("Handle Next fuction calling" + currentStep);
   };

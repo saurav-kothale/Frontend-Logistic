@@ -7,16 +7,19 @@ import { saveAs } from "file-saver";
 import styles from "./SecondStep.module.css";
 // import Box from '@mui/material/Box';
 
-const SecondStep = () => {
-  const { setStep, userData, setUserData,fileId, setFileId, fileName, setFileName, setUploadedFile} = useContext(MultiStepContext);
+const ThirdStep = () => {
+  const { setStep, userData, setUserData,fileId, setFileId, fileName, setFileName, uploadFile} = useContext(MultiStepContext);
   const [downloadLink, setDownloadLink] = useState(null);
+  console.log("Third Step Upload file", userData)
+  const encodedFileName = encodeURIComponent(fileName)
 
-  
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/calculate_zomato_surat",
+        `http://127.0.0.1:8000/calculate_swiggy_surat/${fileId}/${fileName}`,
         {
+          file_id : fileId,
+          file_name : fileName,
           file: userData["file"],
           first_order_from: userData["first_order_from"],
           first_order_to: userData["first_order_to"],
@@ -36,18 +39,23 @@ const SecondStep = () => {
         },
 
         {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
+            headers: { "Content-Type": "multipart/form-data" },
+            // responseType: "blob"
+          }
+
       );
 
-      console.log(response);
-        
       setFileId(response.data.file_id)
       setFileName(response.data.file_name)
 
-      console.log("second step : ",userData["file"])
-      
-      setStep(3)
+
+
+      console.log("Third step response swiggy",response);
+        
+    //   setFileId(response.data.file_id)
+    //   setFileName(response.data.file_name)
+
+      setStep(4)
     } catch (error) {
       console.error("unexpected error", error);
     }
@@ -319,7 +327,7 @@ const SecondStep = () => {
           <div>
         <br></br>
         <div className={styles.buttonContainer}>
-        <Button variant="contained" onClick={() => setStep(1)} color="primary">
+        <Button variant="contained" onClick={() => setStep(2)} color="primary">
           Previous
         </Button>
         <span>  </span>
@@ -329,188 +337,10 @@ const SecondStep = () => {
         </div>
         
       </div>
-        
-
-          
-        </form>
-        {/* <TextField
-          label="From Order"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["first_order_from"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, first_order_from: e.target.value })
-          }
-        />
-        <TextField
-          label="To Order"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["first_order_to"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, first_order_to: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Week Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["first_week_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, first_week_amount: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Weekend Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["first_weekend_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, first_weekend_amount: e.target.value })
-          }
-        />
-      </div>
-
-      <div>
-        <TextField
-          label="From Order"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["second_order_from"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, second_order_from: e.target.value })
-          }
-        />
-
-        <TextField
-          label="To Order"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["second_order_to"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, second_order_to: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Week Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["second_week_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, second_week_amount: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Weekend Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["second_weekend_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, second_weekend_amount: e.target.value })
-          }
-        />
-      </div>
-      <div>
-        <TextField
-          label="Order Greaterthan"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["order_grether_then"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, order_grether_then: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Week Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["week_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, week_amount: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Weekend Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["weekend_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, weekend_amount: e.target.value })
-          }
-        />
-      </div>
-      <div>
-        <TextField
-          label="Rejection Orders"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["maximum_rejection"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, maximum_rejection: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Rejection Order Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["rejection_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, rejection_amount: e.target.value })
-          }
-        />
-
-        <TextField
-          label="Bad Orders"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["maximum_bad_orders"] || ""}
-          onChange={(e) =>
-            setUserData([{ ...userData, maximum_bad_orders: e.target.value }])
-          }
-        />
-
-        <TextField
-          label="Bad Orders Amount"
-          margin="normal"
-          variant="outlined"
-          color="secondary"
-          value={userData["bad_order_amount"] || ""}
-          onChange={(e) =>
-            setUserData({ ...userData, bad_order_amount: e.target.value })
-          }
-        />
-      </div>
-      <div>
-        <Button variant="contained" onClick={() => setStep(1)} color="primary">
-          Previous
-        </Button>
-        <Button variant="contained" onClick={handleSubmit} color="primary">
-          Submit
-        </Button> */}
+      </form>
       </div>
     </div>
   );
 };
 
-export default SecondStep;
+export default ThirdStep;

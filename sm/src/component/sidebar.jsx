@@ -1,4 +1,4 @@
-// import "./sidebar.css"
+import "./sidebar.css"
 const SideBar = ({selectedTab, setSelectedTab}) => {
 
   const handleOnClick = (tabname)=>{
@@ -16,7 +16,7 @@ const SideBar = ({selectedTab, setSelectedTab}) => {
         <svg className="bi pe-none me-2" width="40" height="32">
           <use xlinkHref="#bootstrap"></use>
         </svg>
-        <span className="fs-4">EVIFY PANAL</span>
+        <span className="fs-4">EVIFY PANEL</span>
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
