@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div>
-      <header className="p-3 " style={{ backgroundColor: "#3f51b5" }}>
+      <header className="p-3 " style={{ backgroundColor: "#232d24" }}>
         <div className="container">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a

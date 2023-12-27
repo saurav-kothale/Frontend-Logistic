@@ -7,7 +7,9 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const history = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log("Clicked on login")
     try {
       const response = await fetch('http://127.0.0.1:8000/login', {
         method: 'POST',
@@ -39,8 +41,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={styles.LoginForm}>
-      <h2>Login</h2>
+    <div className={styles.logincontainer}>
+      {/* <h2>Login</h2>
       <form>
         <div className={styles.inputGroup}>
           <label htmlFor="email"></label>
@@ -71,7 +73,53 @@ const LoginForm = () => {
         <button type="button" className={styles.loginBtn} onClick={handleLogin}>
           Login
         </button>
-      </form>
+      </form> */}
+
+<main className="form-signin">
+        <form onSubmit={handleLogin}>
+          <img
+            className="mb-4"
+            src="/src/assets/parcel-box-package-icon.svg"
+            alt=""
+            width="72"
+            height="57"
+          />
+          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+
+          <div className="form-floating">
+            <input
+              type="email"
+              className="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+              value={email_id}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="floatingInput">Email address</label>
+          </div>
+          <div className={`form-floating ${styles.passwordStyle}`} >
+            <input
+              type="password"
+              className="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label htmlFor="floatingPassword">Password</label>
+          </div>
+
+          <div className="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me" /> Remember me
+            </label>
+          </div>
+          <button className={`w-100 btn btn-lg btn-primary ${styles.submitButton}`} type="submit">
+            Sign in
+          </button>
+          <p className="mt-5 mb-3 text-muted">© 2023–2025</p>
+        </form>
+      </main>
     </div>
   );
 };

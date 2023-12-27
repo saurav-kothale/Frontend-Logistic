@@ -27,8 +27,20 @@ const App = () => {
     localStorage.removeItem("token");
     setLoggedIn(false);
   };
+  
+
 
   return (
+    <div>
+    <style jsx global>{`
+      body {
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+        width: 100vw;
+      }
+    `}</style>
+  
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
@@ -45,6 +57,7 @@ const App = () => {
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
+    </div>
   );
 };
 

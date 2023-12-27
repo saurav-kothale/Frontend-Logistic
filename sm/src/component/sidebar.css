@@ -1,4 +1,3 @@
-.nav-link.active {
-    background-color: #007bff; /* Change this color to your desired active color */
-    color: #fff; /* Change this color to the text color you want for the active state */
+.nav-pills .nav-link.active {
+    background-color: #c2803a;
   }
