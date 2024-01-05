@@ -7,47 +7,58 @@ import { saveAs } from "file-saver";
 import styles from "./SecondStep.module.css";
 // import Box from '@mui/material/Box';
 
-const SecondStep = () => {
-  const { setStep, userData, setUserData,fileId, setFileId, fileName, setFileName, setUploadedFile} = useContext(MultiStepContext);
+const EcomStep = () => {
+  const {
+    setStep, userData, setUserData,fileId,
+     fileName, setFileId, setFileName  } = useContext(MultiStepContext);
+
   const [downloadLink, setDownloadLink] = useState(null);
 
-  
+  console.log("Fourth Step file_id and file_name", fileId, fileName)
+
+
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/calculate_zomato_surat",
+        `http://127.0.0.1:8000/calculate_ecom_surat/${fileId}/${fileName}`,
         {
+          file_id : fileId,
+          file_name : fileName,
           file: userData["file"],
-          first_order_from: userData["first_order_from"],
-          first_order_to: userData["first_order_to"],
-          first_week_amount: userData["first_week_amount"],
-          first_weekend_amount: userData["first_weekend_amount"],
-          second_order_from: userData["second_order_from"],
-          second_order_to: userData["second_order_to"],
-          second_week_amount: userData["second_week_amount"],
-          second_weekend_amount: userData["second_weekend_amount"],
-          amount_grether_than: userData["amount_grether_than"],
-          week_amount: userData["week_amount"],
-          weekend_amount: userData["week_amount"],
-          maximum_rejection: userData["maximum_rejection"],
-          rejection_amount: userData["rejection_amount"],
-          maximum_bad_orders: userData["maximum_bad_orders"],
-          bad_order_amount: userData["bad_order_amount"],
+          from_order: userData["first_order_from"],
+          to_order: userData["first_order_to"],
+          first_amount: userData["first_week_amount"],
+        //   first_weekend_amount: userData["first_weekend_amount"],
+        second_condition_from: userData["second_order_from"],
+        second_condition_to: userData["second_order_to"],
+        second_condition_amount: userData["second_week_amount"],
+        //   second_weekend_amount: userData["second_weekend_amount"],
+        third_condition: userData["amount_grether_than"],
+        third_condition_amount: userData["week_amount"],
+        //   weekend_amount: userData["week_amount"],
+        //   maximum_rejection: userData["maximum_rejection"],
+        //   rejection_amount: userData["rejection_amount"],
+        //   maximum_bad_orders: userData["maximum_bad_orders"],
+        //   bad_order_amount: userData["bad_order_amount"],
         },
 
         {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
+            headers: { "Content-Type": "multipart/form-data" },
+            // responseType: "blob"
+          }
+
       );
+
+    //   saveAs(new Blob([response.data]), "modified_data.xlsx");
 
       console.log(response);
         
       setFileId(response.data.file_id)
       setFileName(response.data.file_name)
 
-      console.log("second step : ",userData["file"])
-      
-      setStep(3)
+
+    //   setUserData("");
+      setStep(6)
     } catch (error) {
       console.error("unexpected error", error);
     }
@@ -95,7 +106,7 @@ const SecondStep = () => {
 
             <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
-                Week Amount
+                Amount
               </label>
               <input
                 type="number"
@@ -110,7 +121,7 @@ const SecondStep = () => {
               />
             </div>
 
-            <div class="col-auto">
+            {/* <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
                 Weekend Amount
               </label>
@@ -125,7 +136,7 @@ const SecondStep = () => {
                 }
                 
               />
-            </div>
+            </div> */}
           </div>
           <div className={styles.secondRow}>
           <div class="col-auto">
@@ -164,7 +175,7 @@ const SecondStep = () => {
 
             <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
-                Week Amount
+                Amount
               </label>
               <input
                 type="number"
@@ -178,7 +189,7 @@ const SecondStep = () => {
               />
             </div>
 
-            <div class="col-auto">
+            {/* <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
                 Weekend Amount
               </label>
@@ -192,13 +203,13 @@ const SecondStep = () => {
                   setUserData({ ...userData, second_weekend_amount: e.target.value })
                 }
               />
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.thirdRow}>
           <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
-                Amount Grether than
+                Order Grether than
               </label>
               <input
                 type="number"
@@ -214,7 +225,7 @@ const SecondStep = () => {
 
             <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
-                Week Amount
+                Amount
               </label>
               <input
                 type="number"
@@ -228,7 +239,7 @@ const SecondStep = () => {
               />
             </div>
 
-            <div class="col-auto">
+            {/* <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
               Weekend Amount
               </label>
@@ -243,12 +254,12 @@ const SecondStep = () => {
                 }
                 
               />
-            </div>
+            </div> */}
 
             
           </div>
 
-          <div className={styles.fourthRow}>
+          {/* <div className={styles.fourthRow}>
           <div class="col-auto">
               <label for="inputPassword2" class="visually-hidden">
                 Maximum Rejection 
@@ -315,11 +326,11 @@ const SecondStep = () => {
                 
               />
             </div>
-          </div>
+          </div> */}
           <div>
         <br></br>
         <div className={styles.buttonContainer}>
-        <Button variant="contained" onClick={() => setStep(1)} color="primary">
+        <Button variant="contained" onClick={() => setStep(4)} color="primary">
           Previous
         </Button>
         <span>  </span>
@@ -329,12 +340,10 @@ const SecondStep = () => {
         </div>
         
       </div>
-          
-        </form>
-        
+      </form>
       </div>
     </div>
   );
 };
 
-export default SecondStep;
+export default EcomStep;

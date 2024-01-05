@@ -8,10 +8,15 @@ import styles from "./SecondStep.module.css";
 // import Box from '@mui/material/Box';
 
 const FourthStep = () => {
-  const { setStep, userData, setUserData,fileId, setFileId, fileName, setFileName, uploadFile} = useContext(MultiStepContext);
+  const {
+    setStep, userData, setUserData,fileId,
+     fileName, setFileId, setFileName} = useContext(MultiStepContext);
+
   const [downloadLink, setDownloadLink] = useState(null);
+
   console.log("Fourth Step file_id and file_name", fileId, fileName)
-  const encodedFileName = encodeURIComponent(fileName)
+
+
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
@@ -39,21 +44,21 @@ const FourthStep = () => {
 
         {
             headers: { "Content-Type": "multipart/form-data" },
-            responseType: "blob"
+            // responseType: "blob"
           }
 
       );
 
-      saveAs(new Blob([response.data]), "modified_data.xlsx");
+      // saveAs(new Blob([response.data]), "modified_data.xlsx");
 
       console.log(response);
         
-    //   setFileId(response.data.file_id)
-    //   setFileName(response.data.file_name)
+      setFileId(response.data.file_id)
+      setFileName(response.data.file_name)
 
 
-      setUserData("");
-    //   setStep()
+      // setUserData("");
+      setStep(5)
     } catch (error) {
       console.error("unexpected error", error);
     }
@@ -330,7 +335,7 @@ const FourthStep = () => {
         </Button>
         <span>  </span>
         <Button variant="contained" onClick={handleSubmit} color="primary">
-          Submit
+          Next
         </Button> 
         </div>
         

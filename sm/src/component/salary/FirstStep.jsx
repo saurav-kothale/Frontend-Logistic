@@ -53,7 +53,7 @@ const FirstStep = () => {
     setUploadedFile(uploadedFile)
     console.log("first step : ", uploadedFile)
 
-    setStep(2);
+    setStep(7);
     console.log("Handle Next fuction calling" + currentStep);
   };
 

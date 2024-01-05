@@ -11,6 +11,9 @@ import { MultiStepContext } from "../../contexts/StepContext"
 // import FileUpload from './components/FileUpload';
 import styles from "./StepApp.module.css"
 import FourthStep from './FourthStep';
+import EcomStep from './E-com_step';
+import FlipkartStep from './FlipkartStep';
+import BluedartStep from './BluedartStep';
 
 function StepApp() {
   
@@ -30,6 +33,15 @@ function StepApp() {
 
         case 4:
           return <FourthStep/>
+
+        case 5:
+          return <EcomStep/>
+
+        case 6:
+          return <FlipkartStep/>
+
+        case 7:
+          return <BluedartStep/>
       }
     }
     return (
@@ -37,6 +49,15 @@ function StepApp() {
         <div className={styles.MainContainer}>
         <div className={styles.stepContainer}>
           <Stepper style={{width: "18%"}} activeStep={currentStep-1} orientation='horizontal'>
+            <Step>
+              <StepLabel></StepLabel>
+            </Step>
+            <Step>
+              <StepLabel></StepLabel>
+            </Step>
+            <Step>
+              <StepLabel></StepLabel>
+            </Step>
             <Step>
               <StepLabel></StepLabel>
             </Step>
